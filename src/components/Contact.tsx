@@ -8,11 +8,11 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 const contactDetails = [
   {
     icon: <PhoneIcon color="primary" />,
-    text: '(+51) 999-888-777', // Placeholder
+    text: '983 559 987', // Real data
   },
   {
     icon: <EmailIcon color="primary" />,
-    text: 'contacto@lilysgrooming.com', // Placeholder
+    text: 'Lilysgrooming@gmail.com', // Real data
   },
   {
     icon: <LocationOnIcon color="primary" />,

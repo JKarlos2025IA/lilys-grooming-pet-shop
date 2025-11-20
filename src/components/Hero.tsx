@@ -36,8 +36,16 @@ const Hero = () => {
         <Typography variant="h5" component="p" sx={{ mb: 4 }}>
           Donde consentimos a tu mejor amigo con el cuidado que se merece.
         </Typography>
-        <Button variant="contained" color="primary" size="large">
-          Agendar una Cita
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          component="a"
+          href="https://wa.me/51983559987?text=Hola,%20me%20gustaría%20agendar%20una%20cita."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Agendar una Cita por WhatsApp
         </Button>
       </Box>
     </Box>
