@@ -15,8 +15,8 @@ const theme = createTheme({
       dark: '#8E24AA',      // Púrpura más oscuro
     },
     background: {
-      default: '#FAFAFA',   // Fondo gris muy claro
-      paper: '#FFFFFF',     // Fondo blanco para cards
+      default: '#F3E5F5',   // Fondo púrpura muy claro (lavanda suave)
+      paper: '#FAF5FC',     // Fondo casi blanco con tinte púrpura
     },
     text: {
       primary: '#2D2D2D',   // Texto principal gris oscuro

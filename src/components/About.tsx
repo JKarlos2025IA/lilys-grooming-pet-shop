@@ -3,7 +3,7 @@ import TeamImage from '../assets/Logo.jpeg'; // Using your logo as a placeholder
 
 const About = () => {
   return (
-    <Box sx={{ py: 6, backgroundColor: 'background.default' }}>
+    <Box sx={{ py: 6, backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 4, alignItems: 'center' }}>
           <Box>

@@ -29,10 +29,13 @@ const productCategories = [
 
 const Products = () => {
   return (
-    <Box sx={{ py: 6 }}>
+    <Box sx={{ py: 6, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
         <Typography variant="h2" component="h2" align="center" gutterBottom>
           Nuestra Tienda
+        </Typography>
+        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 4 }}>
+          Todo lo que tu mascota necesita en un solo lugar
         </Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: 4, mt: 4 }}>
           {productCategories.map((category) => (

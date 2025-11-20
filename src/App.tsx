@@ -18,7 +18,15 @@ function App() {
 
   // Asegurar que la página cargue arriba
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Forzar scroll al inicio inmediatamente y después del render
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // Doble verificación después de un pequeño delay
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
