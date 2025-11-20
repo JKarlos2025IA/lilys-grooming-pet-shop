@@ -1,5 +1,4 @@
-import React from 'react';
-import { Container, Grid, Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
+import { Container, Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
 import ServiceImg1 from '../assets/Servicios_01.png';
 import ServiceImg2 from '../assets/Servicios_02.png';
 import ServiceImg3 from '../assets/Servicios_03.png';
@@ -35,27 +34,25 @@ const Services = () => {
         <Typography variant="h2" component="h2" align="center" gutterBottom>
           Nuestros Servicios
         </Typography>
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: 4, mt: 4 }}>
           {services.map((service) => (
-            <Grid item key={service.name} xs={12} sm={6} md={3}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={service.image}
-                  alt={service.name}
-                  sx={{ objectFit: 'cover' }}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h5" component="h3">
-                    {service.name}
-                  </Typography>
-                  <Typography>{service.description}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+            <Card key={service.name} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image={service.image}
+                alt={service.name}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h3">
+                  {service.name}
+                </Typography>
+                <Typography>{service.description}</Typography>
+              </CardContent>
+            </Card>
           ))}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );

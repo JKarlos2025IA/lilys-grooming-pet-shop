@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Typography, ImageList, ImageListItem, Box } from '@mui/material';
 
 // Importa las imágenes que te parezcan mejores de la carpeta assets

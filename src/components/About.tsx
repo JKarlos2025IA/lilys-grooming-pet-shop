@@ -1,13 +1,12 @@
-import React from 'react';
-import { Container, Grid, Typography, Box } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 import TeamImage from '../assets/Logo.jpeg'; // Using your logo as a placeholder for now
 
 const About = () => {
   return (
     <Box sx={{ py: 6, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)' }, gap: 4, alignItems: 'center' }}>
+          <Box>
             <Box
               component="img"
               sx={{
@@ -18,8 +17,8 @@ const About = () => {
               alt="El equipo de Lily's Grooming"
               src={TeamImage}
             />
-          </Grid>
-          <Grid item xs={12} md={6}>
+          </Box>
+          <Box>
             <Typography variant="h2" component="h2" gutterBottom>
               Sobre Nosotros
             </Typography>
@@ -32,8 +31,8 @@ const About = () => {
             <Typography variant="caption" display="block" sx={{ fontStyle: 'italic', mt: 2 }}>
               *Importante: Ofrecemos servicios de estética y bienestar. No somos una clínica veterinaria.
             </Typography>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
