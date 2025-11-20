@@ -1,4 +1,6 @@
-import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material';
+import { useEffect } from 'react';
+import { AppBar, Toolbar, Typography, Button, Container, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import PetsIcon from '@mui/icons-material/Pets';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -7,14 +9,35 @@ import Promotions from './components/Promotions';
 import Gallery from './components/Gallery';
 import About from './components/About';
 import Contact from './components/Contact';
+import { useState } from 'react';
 
 function App() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  // Asegurar que la página cargue arriba
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setMobileOpen(false);
   };
+
+  const menuItems = [
+    { label: 'Inicio', id: 'inicio' },
+    { label: 'Servicios', id: 'servicios' },
+    { label: 'Productos', id: 'productos' },
+    { label: 'Promociones', id: 'promociones' },
+    { label: 'Galería', id: 'galeria' },
+    { label: 'Nosotros', id: 'nosotros' },
+    { label: 'Contacto', id: 'contacto' },
+  ];
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: 'background.default' }}>
@@ -22,18 +45,49 @@ function App() {
       <AppBar position="sticky" color="primary" sx={{ top: 0, zIndex: 1100 }}>
         <Toolbar>
           <PetsIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
             Lily's Grooming & Pet Shop
           </Typography>
-          <Button color="inherit" onClick={() => scrollToSection('inicio')}>Inicio</Button>
-          <Button color="inherit" onClick={() => scrollToSection('servicios')}>Servicios</Button>
-          <Button color="inherit" onClick={() => scrollToSection('productos')}>Productos</Button>
-          <Button color="inherit" onClick={() => scrollToSection('promociones')}>Promociones</Button>
-          <Button color="inherit" onClick={() => scrollToSection('galeria')}>Galería</Button>
-          <Button color="inherit" onClick={() => scrollToSection('nosotros')}>Nosotros</Button>
-          <Button color="inherit" onClick={() => scrollToSection('contacto')}>Contacto</Button>
+
+          {/* Menú Desktop */}
+          {!isMobile ? (
+            <>
+              {menuItems.map((item) => (
+                <Button key={item.id} color="inherit" onClick={() => scrollToSection(item.id)} sx={{ fontSize: '0.875rem' }}>
+                  {item.label}
+                </Button>
+              ))}
+            </>
+          ) : (
+            <IconButton
+              color="inherit"
+              edge="end"
+              onClick={() => setMobileOpen(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
         </Toolbar>
       </AppBar>
+
+      {/* Drawer Mobile */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+      >
+        <Box sx={{ width: 250 }} role="presentation">
+          <List>
+            {menuItems.map((item) => (
+              <ListItem key={item.id} disablePadding>
+                <ListItemButton onClick={() => scrollToSection(item.id)}>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
 
       {/* Main Content Area */}
       <main>
@@ -64,18 +118,19 @@ function App() {
       <Box
         component="footer"
         sx={{
-          py: 3,
+          py: 4,
           px: 2,
           mt: 'auto',
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[300]
-              : theme.palette.grey[800],
+          background: 'linear-gradient(135deg, #6A1B9A 0%, #9C27B0 100%)',
+          color: 'white',
         }}
       >
         <Container maxWidth="sm">
-          <Typography variant="body1" align="center">
-            © {new Date().getFullYear()} Lily's Grooming & Pet Shop. Todos los derechos reservados.
+          <Typography variant="body1" align="center" sx={{ fontWeight: 500 }}>
+            © {new Date().getFullYear()} Lily's Grooming & Pet Shop
+          </Typography>
+          <Typography variant="body2" align="center" sx={{ mt: 1, opacity: 0.9 }}>
+            Todos los derechos reservados.
           </Typography>
         </Container>
       </Box>

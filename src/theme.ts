@@ -1,16 +1,26 @@
 import { createTheme } from '@mui/material/styles';
 
-// A custom theme for this app
+// Tema personalizado para Lily's Grooming - Púrpuras elegantes
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#66bb6a', // A nice, soft green
+      main: '#9C27B0',      // Púrpura vibrante para header y botones
+      light: '#E1BEE7',     // Púrpura claro para fondos
+      dark: '#6A1B9A',      // Púrpura oscuro para contraste
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#ffc107', // A warm amber for accents
+      main: '#CE93D8',      // Púrpura medio para acentos
+      light: '#F3E5F5',     // Púrpura muy claro
+      dark: '#8E24AA',      // Púrpura más oscuro
     },
     background: {
-      default: '#f8f8f8', // A very light grey for the background
+      default: '#FAFAFA',   // Fondo gris muy claro
+      paper: '#FFFFFF',     // Fondo blanco para cards
+    },
+    text: {
+      primary: '#2D2D2D',   // Texto principal gris oscuro
+      secondary: '#6A1B9A', // Texto secundario púrpura oscuro
     },
   },
   typography: {
@@ -25,12 +35,59 @@ const theme = createTheme({
     ].join(','),
     h1: {
       fontSize: '2.5rem',
-      fontWeight: 500,
+      fontWeight: 600,
+      color: '#6A1B9A',
     },
     h2: {
       fontSize: '2rem',
+      fontWeight: 600,
+      color: '#6A1B9A',
+    },
+    h4: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      color: '#8E24AA',
+    },
+    h5: {
+      fontSize: '1.25rem',
       fontWeight: 500,
-    }
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 500,
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: 'none',
+          fontWeight: 600,
+        },
+        contained: {
+          boxShadow: '0 4px 12px rgba(156, 39, 176, 0.3)',
+          '&:hover': {
+            boxShadow: '0 6px 16px rgba(156, 39, 176, 0.4)',
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0 2px 8px rgba(156, 39, 176, 0.2)',
+        },
+      },
+    },
   },
 });
 
