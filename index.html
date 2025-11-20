@@ -1,13 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>temp-vite-project</title>
+    <title>Lily's Grooming & Pet Shop - Cuidado profesional para tu mascota</title>
+    <meta name="description" content="Servicios profesionales de grooming y productos para mascotas. Baño, corte, spa y más en Lima, Perú." />
+    <style>
+      /* Asegurar que la página cargue desde arriba */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Forzar scroll al inicio al cargar la página
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    </script>
   </body>
 </html>

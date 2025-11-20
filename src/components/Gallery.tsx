@@ -1,47 +1,67 @@
-import { Container, Typography, ImageList, ImageListItem, Box } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
+import PetsIcon from '@mui/icons-material/Pets';
 
-// Importa las imágenes que te parezcan mejores de la carpeta assets
-import image1 from '../assets/WhatsApp Image 2025-11-19 at 9.53.53 PM (1).jpeg';
-import image2 from '../assets/WhatsApp Image 2025-11-19 at 9.53.53 PM (2).jpeg';
-import image3 from '../assets/WhatsApp Image 2025-11-19 at 9.53.53 PM.jpeg';
-import image4 from '../assets/WhatsApp Image 2025-11-19 at 9.53.54 PM (1).jpeg';
-import image5 from '../assets/WhatsApp Image 2025-11-19 at 9.53.54 PM (2).jpeg';
-import image6 from '../assets/WhatsApp Image 2025-11-19 at 9.53.57 PM.jpeg';
-import image7 from '../assets/WhatsApp Image 2025-11-19 at 9.53.58 PM.jpeg';
-import image8 from '../assets/WhatsApp Image 2025-11-19 at 9.54.00 PM.jpeg';
-
-
-const itemData = [
-  { img: image1, title: 'Feliz y limpio' },
-  { img: image2, title: 'Nuevo corte' },
-  { img: image3, title: 'Pura elegancia' },
-  { img: image4, title: 'Listo para la foto' },
-  { img: image5, title: 'Amigo peludo' },
-  { img: image6, title: 'Después del baño' },
-  { img: image7, title: 'Sonrisa de perro' },
-  { img: image8, title: 'Estilo impecable' },
+// Placeholders temporales - Reemplazar con fotos reales cuando estén listas
+const placeholders = [
+  { id: 1, title: 'Cliente feliz 1' },
+  { id: 2, title: 'Cliente feliz 2' },
+  { id: 3, title: 'Cliente feliz 3' },
+  { id: 4, title: 'Cliente feliz 4' },
+  { id: 5, title: 'Cliente feliz 5' },
+  { id: 6, title: 'Cliente feliz 6' },
 ];
 
 const Gallery = () => {
   return (
-    <Box sx={{ py: 6 }}>
+    <Box sx={{ py: 6, backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
         <Typography variant="h2" component="h2" align="center" gutterBottom>
           Nuestros Clientes Felices
         </Typography>
-        <ImageList sx={{ width: '100%', height: 'auto' }} variant="masonry" cols={4} gap={8}>
-          {itemData.map((item) => (
-            <ImageListItem key={item.img}>
-              <img
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                alt={item.title}
-                loading="lazy"
-                style={{ borderRadius: '8px' }}
-              />
-            </ImageListItem>
+        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 4 }}>
+          Próximamente verás aquí las fotos de nuestros peluditos consentidos
+        </Typography>
+
+        {/* Grid de placeholders */}
+        <Box sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+          gap: 3
+        }}>
+          {placeholders.map((item) => (
+            <Box
+              key={item.id}
+              sx={{
+                aspectRatio: '4/3',
+                borderRadius: 3,
+                background: 'linear-gradient(135deg, #E1BEE7 0%, #CE93D8 100%)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                transition: 'transform 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 4px 12px rgba(156, 39, 176, 0.2)',
+                },
+              }}
+            >
+              <PetsIcon sx={{ fontSize: 60, color: '#6A1B9A', opacity: 0.5, mb: 2 }} />
+              <Typography variant="body2" sx={{ color: '#6A1B9A', fontWeight: 500 }}>
+                {item.title}
+              </Typography>
+            </Box>
           ))}
-        </ImageList>
+        </Box>
+
+        {/* Instrucciones para agregar fotos */}
+        <Box sx={{ mt: 4, p: 3, backgroundColor: '#F3E5F5', borderRadius: 2 }}>
+          <Typography variant="body2" color="text.secondary" align="center">
+            💡 <strong>Para agregar tus fotos:</strong> Guarda las imágenes en la carpeta{' '}
+            <code>src/assets/gallery/</code> y actualiza el componente Gallery.tsx
+          </Typography>
+        </Box>
       </Container>
     </Box>
   );
